@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Wedding - 案内サイト</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="left-image">
+        </div>
+
+        <div class="main-content">
+            <header>
+                <div class="menu-btn" id="menuBtn"> 
+                </div>
+                <nav class="nav-menu" id="navMenu">
+                </nav>
+            </header>
+            <main>
+                <section id="escort" class="section-alt">
+                    <h2>Escort Card</h2>
+                    <div id="escort-container">
+                        <div id="step-group">
+                            <p>あなたの該当するグループを選択してください</p>
+                            <button class="btn" onclick="showTable('HA')">新郎研究室</button>
+                            <button class="btn" onclick="showTable('HB')">新郎小学校</button>
+                            <button class="btn" onclick="showTable('HC')">新郎中高</button>
+                            <button class="btn" onclick="showTable('HD')">新郎親族</button>
+                            <button class="btn" onclick="showTable('SA')">新婦会社</button>
+                            <button class="btn" onclick="showTable('SB')">新婦中高</button>
+                            <button class="btn" onclick="showTable('SC')">新婦サークル</button>
+                            <button class="btn" onclick="showTable('SD')">新婦泡会</button>
+                            <button class="btn" onclick="showTable('SE')">新婦親族</button>
+                        </div>
+                        <div id="step-name" style="display:none;">
+                            <button class="back-link" onclick="backToGroup()">← 戻る</button>
+                            <p id="selected-group-name"></p>
+                            <div id="name-list"></div>
+                        </div>
+                        <div class="map-wrapper">
+                            <img src="images/seat-map.png" alt="席次表" loading="lazy">
+                            <div id="table-marker" class="marker"></div>
+                            <div id="seat-marker" class="marker"></div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <footer>
+                <p>&copy; 2026 Hiroshi Sampei</p>
+            </footer>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>
