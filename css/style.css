@@ -1,0 +1,200 @@
+/* 基本設定 */
+body　{
+    color: #5d5245; /* 濃いブラウングレー */
+    background-color: #fdfaf5;
+    font-family: "Sawarabi Mincho", "Hiragino Mincho ProN", serif;
+    line-height: 1.8;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+    font-family: "Sawarabi Mincho", "Hiragino Mincho ProN", serif;/*"Helvetica Neue", Arial, sans-serif;*/
+}
+
+/* 全体のコンテナ（PCでは横並び） */
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* 左側の画像エリア（PC用） */
+.left-image {
+    flex: 1; /* 残りの幅を全部使う */
+    background-image: url('../images/left.png'); /* お二人の写真を指定 */
+    background-size: cover;
+    background-position: center;
+}
+
+/* 右側のメインエリア（スマホサイズに固定） */
+.main-content {
+    width: 100%;
+    max-width: 450px; /* スマホの横幅をシミュレート */
+    background-color: #fff;
+    overflow-y: auto; /* ここだけスクロールさせる */
+    padding: 20px;
+}
+
+/* スマホで見ている時の設定（画面幅が短いとき） */
+@media (max-width: 768px) {
+    .left-image {
+        display: none; /* スマホでは画像エリアを消す */
+    }
+    .main-content {
+        max-width: 100%; /* スマホでは全幅表示 */
+    }
+}
+
+
+
+/*ハンバーガー*/
+/* 右上の三本線ボタン */
+.menu-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    height: 25px;
+    z-index: 100; /* 一番手前に */
+    cursor: pointer;
+}
+
+.menu-btn span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #d4af37; /* 結婚式らしいゴールド */
+    margin-bottom: 8px;
+    transition: all 0.5s; /* 動きを滑らかに */
+}
+
+/* ボタンが押されたとき（active）の各線の動き */
+
+/* 1番目の線を45度傾けて下にずらす */
+.menu-btn.active span:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+    background-color: #fff; /* メニュー背景に合わせて白に変えると見やすい */
+}
+
+/* 2番目の線（真ん中）を透明にする */
+.menu-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+
+/* 3番目の線を-45度傾けて上にずらす */
+.menu-btn.active span:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+    background-color: #fff;
+}
+
+/* メニュー画面の初期状態（隠しておく） */
+.nav-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* 半透明の黒 */
+    z-index: 90;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* 最初は透明 */
+    visibility: hidden; /* 最初はクリックできないように隠す */
+    transition: all 0.4s;
+}
+
+/* メニューが表示された時の状態 */
+.nav-menu.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.nav-menu ul {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+}
+
+.nav-menu ul li {
+    margin: 30px 0;
+}
+
+.nav-menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+}
+
+
+/* セクションの交互背景色 */
+section {
+    padding: 80px 20px;
+    text-align: center;
+}
+.section-alt {
+    background-color: #f4eee8; /* 少し色のついたベージュ */
+}
+
+h2 {
+    font-weight: 400;
+    letter-spacing: 4px;
+    margin-bottom: 30px;
+    color: #d4af37; /* ゴールド */
+}
+
+/* エスコートカード関連 */
+.map-wrapper {
+    position: relative;
+    margin-top: 20px;
+    display: inline-block;
+    width: 90%; /* 左右に合計10%の余白 */
+    max-width: 600px; /* 大きくなりすぎないように制限 */
+}
+
+.map-wrapper img {
+    width: 100%; /* 親要素(90%)に対して100% */
+    height: auto;
+    display: block;
+}
+
+.marker {
+    position: absolute;
+    border-radius: 50%;
+    display: none; /* 最初は隠す */
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+/* テーブル用の大きな丸（金色の太線など） */
+#table-marker {
+    width: 80px;
+    height: 80px;
+    border: 4px solid #d4af37;
+    z-index: 10;
+}
+/* 個人席用の小さな丸（赤色の細線など） */
+#seat-marker {
+    width: 30px;
+    height: 30px;
+    border: 3px solid #ff4d4d;
+    z-index: 20;
+}
+
+.back-link {
+    background: none;
+    border: none;
+    color: #d4af37;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+/* 銀行情報カード */
+.bank-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    display: inline-block;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
