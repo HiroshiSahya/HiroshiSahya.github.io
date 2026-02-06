@@ -14,15 +14,15 @@ navMenu.addEventListener('click', () => {
 
 // エスコートカードのデータ例
 const tableData = {
-    'HA': { name: '新郎研究室', guests: [{name:'関根泰様',x:'25%',y:'38%'}, {name:'佐藤様',x:'30%',y:'36%'}], x: '30%', y: '40%' },
-    'HB': { name: '新郎小学校', guests: [{name:'関根泰様',x:'25%',y:'38%'}, {name:'佐藤様',x:'30%',y:'36%'}], x: '30%', y: '40%' },
-    'HC': { name: '新郎中高', guests: [{name:'関根泰様',x:'25%',y:'38%'}, {name:'佐藤様',x:'30%',y:'36%'}], x: '30%', y: '40%' },
-    'HD': { name: '新郎親族', guests: [{name:'関根泰様',x:'25%',y:'38%'}, {name:'佐藤様',x:'30%',y:'36%'}], x: '30%', y: '40%' },
-    'SA': { name: '新婦会社', guests: [{name:'関根泰様',x:'25%',y:'38%'}, {name:'佐藤様',x:'30%',y:'36%'}], x: '30%', y: '40%' },
-    'SB': { name: '新婦中高', guests: [{name:'関根泰様',x:'25%',y:'38%'}, {name:'佐藤様',x:'30%',y:'36%'}], x: '30%', y: '40%' },
-    'SC': { name: '新婦サークル', guests: [{name:'関根泰様',x:'25%',y:'38%'}, {name:'佐藤様',x:'30%',y:'36%'}], x: '30%', y: '40%' },
-    'SD': { name: '新婦泡会', guests: [{name:'関根泰様',x:'25%',y:'38%'}, {name:'佐藤様',x:'30%',y:'36%'}], x: '30%', y: '40%' },
-    'SE': { name: '新婦親族', guests: [{name:'関根泰様',x:'25%',y:'38%'}, {name:'佐藤様',x:'30%',y:'36%'}], x: '70%', y: '60%' }
+    'HA': { name: '新郎研究室', guests: [{name:'関根泰様',x:'25%',y:'38%'}, {name:'佐藤様',x:'30%',y:'36%'}], positions: [{x: '30%', y: '40%' }, {x: '60%', y: '70%' }], x: '30%', y: '40%'},
+    'HB': { name: '新郎小学校', guests: [{name:'関根泰様',x:'25%',y:'38%'}, {name:'佐藤様',x:'30%',y:'36%'}], positions: [{x: '30%', y: '40%' }, {x: '60%', y: '70%' }]},
+    'HC': { name: '新郎中高', guests: [{name:'関根泰様',x:'25%',y:'38%'}, {name:'佐藤様',x:'30%',y:'36%'}], positions: [{x: '30%', y: '40%' }, {x: '60%', y: '70%' }]},
+    'HD': { name: '新郎親族', guests: [{name:'関根泰様',x:'25%',y:'38%'}, {name:'佐藤様',x:'30%',y:'36%'}], positions: [{x: '30%', y: '40%' }, {x: '60%', y: '70%' }]},
+    'SA': { name: '新婦会社', guests: [{name:'関根泰様',x:'25%',y:'38%'}, {name:'佐藤様',x:'30%',y:'36%'}], positions: [{x: '30%', y: '40%' }, {x: '60%', y: '70%' }]},
+    'SB': { name: '新婦中高', guests: [{name:'関根泰様',x:'25%',y:'38%'}, {name:'佐藤様',x:'30%',y:'36%'}], positions: [{x: '30%', y: '40%' }, {x: '60%', y: '70%' }]},
+    'SC': { name: '新婦サークル', guests: [{name:'関根泰様',x:'25%',y:'38%'}, {name:'佐藤様',x:'30%',y:'36%'}], positions: [{x: '30%', y: '40%' }, {x: '60%', y: '70%' }]},
+    'SD': { name: '新婦泡会', guests: [{name:'関根泰様',x:'25%',y:'38%'}, {name:'佐藤様',x:'30%',y:'36%'}], positions: [{x: '30%', y: '40%' }, {x: '60%', y: '70%' }]},
+    'SE': { name: '新婦親族', guests: [{name:'関根泰様',x:'25%',y:'38%'}, {name:'佐藤様',x:'30%',y:'36%'}], positions: [{x: '30%', y: '40%' }, {x: '60%', y: '70%' }]}
 };
 
 function showTable(groupId) {
@@ -30,11 +30,23 @@ function showTable(groupId) {
     document.getElementById('step-group').style.display = 'none';
     document.getElementById('step-name').style.display = 'block';
     document.getElementById('selected-group-name').innerText = data.name;
+
+    // 既存のテーブルマーカーを一度削除する ---
+    const mapWrapper = document.querySelector('.map-wrapper');
+    const oldMarkers = document.querySelectorAll('.dynamic-table-marker');
+    oldMarkers.forEach(m => m.remove());
 // テーブルに丸を付ける
-    const tMarker = document.getElementById('table-marker');
-    tMarker.style.display = 'block';
-    tMarker.style.left = data.x;
-    tMarker.style.top = data.y;
+    if (data.positions && data.positions.length > 0) {
+        data.positions.forEach(pos => {
+            const tMarker = document.createElement('div');
+            tMarker.className = 'marker dynamic-table-marker'; // 共通クラスと削除用クラス
+            tMarker.style.display = 'block';
+            tMarker.style.left = pos.x;
+            tMarker.style.top = pos.y;
+            mapWrapper.appendChild(tMarker);
+        });
+    }
+
 
     // 席の丸は一旦隠す      
     document.getElementById('seat-marker').style.display = 'none';
@@ -63,6 +75,6 @@ function moveSeatMarker(x, y) {
 function backToGroup() {
     document.getElementById('step-group').style.display = 'block';
     document.getElementById('step-name').style.display = 'none';
-    document.getElementById('table-marker').style.display = 'none';
+    document.querySelectorAll('.dynamic-table-marker').forEach(m => m.remove());
     document.getElementById('seat-marker').style.display = 'none';
 }

@@ -1,5 +1,5 @@
 /* 基本設定 */
-body　{
+body {
     color: #5d5245; /* 濃いブラウングレー */
     background-color: #fdfaf5;
     font-family: "Sawarabi Mincho", "Hiragino Mincho ProN", serif;
@@ -168,7 +168,8 @@ h2 {
     transition: all 0.3s ease;
 }
 /* テーブル用の大きな丸（金色の太線など） */
-#table-marker {
+.dynamic-table-marker {
+    display: block !important;/* markerクラスのnoneを強制的に上書き */
     width: 80px;
     height: 80px;
     border: 4px solid #d4af37;
