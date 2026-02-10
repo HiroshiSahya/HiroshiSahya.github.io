@@ -130,7 +130,7 @@ html {
 
 /* セクションの交互背景色 */
 section {
-    padding: 80px 20px;
+    padding: 20px 20px;
     text-align: center;
 }
 .section-alt {
@@ -140,7 +140,7 @@ section {
 h2 {
     font-weight: 400;
     letter-spacing: 4px;
-    margin-bottom: 30px;
+    margin-bottom: 0px;
     color: #d4af37; /* ゴールド */
 }
 
