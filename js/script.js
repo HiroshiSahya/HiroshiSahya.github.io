@@ -63,7 +63,7 @@ function showTable(groupId) {
         const btn = document.createElement('button');
         btn.className = 'btn';
         btn.innerText = guest.name;
-        btn.style.fontSize = '150%';
+        btn.style.fontSize = '130%';
         btn.onclick = () => moveSeatMarker(guest.x, guest.y);
         list.appendChild(btn);
     });
