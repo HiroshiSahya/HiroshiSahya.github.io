@@ -145,6 +145,9 @@ h2 {
 }
 
 /* エスコートカード関連 */
+.groupbtn{
+    font-size: 150%;
+}
 .map-wrapper {
     position: relative;
     margin-top: 20px;
