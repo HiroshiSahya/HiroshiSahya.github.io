@@ -32,7 +32,7 @@ html {
     max-width: 450px; /* スマホの横幅をシミュレート */
     background-color: #fff;
     overflow-y: auto; /* ここだけスクロールさせる */
-    padding: 20px;
+    padding: 10px;
 }
 
 /* スマホで見ている時の設定（画面幅が短いとき） */
@@ -192,6 +192,28 @@ h2 {
     margin-bottom: 10px;
 }
 
+/* フードとドリンク */
+#drinkmenu {
+    text-align: center; /* セクション全体を中央揃えにしている場合 */
+}
+
+.custom-list {
+    display: inline-block; /* リストの幅を中身に合わせる */
+    text-align: left;      /* 文字と黒丸は左揃えにする */
+    padding-left: 20px;    /* ここで「黒丸をどれくらい右に持ってくるか」を調整 */
+}
+
+.category-title {
+    margin-bottom: 0px; /* 0にするとさらにピッタリくっつきます */
+}
+
+.custom-list {
+    margin-top: 0;
+    display: inline-block;
+    text-align: left;
+    padding-left: 20px;
+}
+    
 /* 銀行情報カード */
 .bank-card {
     background: white;
