@@ -130,7 +130,7 @@ html {
 
 /* セクションの交互背景色 */
 section {
-    padding: 20px 20px;
+    padding: 15px 20px;
     text-align: center;
 }
 .section-alt {
@@ -140,6 +140,7 @@ section {
 h2 {
     font-weight: 400;
     letter-spacing: 4px;
+    margin-top: 0px;
     margin-bottom: 0px;
     color: #d4af37; /* ゴールド */
 }
@@ -195,26 +196,42 @@ h2 {
     margin-bottom: 10px;
 }
 
-/* フードとドリンク */
-#drinkmenu {
-    text-align: center; /* セクション全体を中央揃えにしている場合 */
+/* ドリンクセクション全体 */
+#menu {
+    text-align: center; 
 }
 
+/* リストの外枠：中央に配置し、中身は左揃え */
 .custom-list {
-    display: inline-block; /* リストの幅を中身に合わせる */
-    text-align: left;      /* 文字と黒丸は左揃えにする */
-    padding-left: 20px;    /* ここで「黒丸をどれくらい右に持ってくるか」を調整 */
+    display: block;      /* inline-blockからblockに変更 */
+    text-align: left;    /* 内部を左揃えに固定 */
+    width: 100%;         /* 親のmain-contentいっぱいに広げる */
+    margin: 0 auto;      /* リスト全体を中央に寄せたい場合はこれ */
 }
 
+/* カテゴリタイトルの調整 */
 .category-title {
-    margin-bottom: 0px; /* 0にするとさらにピッタリくっつきます */
+    margin-top: 0px;
+    margin-bottom: 5px; /* 少しだけ余白を持たせると読みやすいです */
 }
 
-.custom-list {
-    margin-top: 0;
-    display: inline-block;
-    text-align: left;
-    padding-left: 20px;
+details {
+    width: 100%; /* 中身の長さに幅を合わせる */
+    margin-left: 0;     /* 左端に寄せる */
+    margin-right: auto;
+}
+
+summary {
+    text-align: center;
+    cursor: pointer;
+    list-style-position: inside; /* マーカーを内側に入れる、または必要に応じて調整 */
+}
+
+/* 開いた時の中身（説明文）の調整 */
+.details-content {
+    text-align: center;
+    padding-left: 1.5em; /* 15vwの代わりに、文字1.5個分ほど右にずらす */
+    display: block;
 }
     
 /* 銀行情報カード */
