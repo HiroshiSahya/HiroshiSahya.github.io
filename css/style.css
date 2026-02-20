@@ -230,7 +230,7 @@ summary {
 /* 開いた時の中身（説明文）の調整 */
 .details-content {
     text-align: center;
-    padding-left: 1.5em; /* 15vwの代わりに、文字1.5個分ほど右にずらす */
+    /* padding-left: 1.5em; 15vwの代わりに、文字1.5個分ほど右にずらす */
     display: block;
 }
     
