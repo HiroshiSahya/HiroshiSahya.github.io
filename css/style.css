@@ -233,6 +233,32 @@ summary {
     /* padding-left: 1.5em; 15vwの代わりに、文字1.5個分ほど右にずらす */
     display: block;
 }
+
+
+/* Q&A */
+/* 投稿メッセージ */
+.post-main p {
+    text-align: left;
+    margin: 5px 0;
+    white-space: pre-wrap; /* 改行を反映させる */
+}
+
+/* 返信部分（インデント） */
+.post-reply {
+    text-align: left;
+    margin-left: 30px;      /* 1インデント分右にずらす */
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f9f9f9; /* 返信と分かりやすくするために背景を少し変える */
+    border-left: 3px solid #ccc; /* 縦線を入れて引用っぽくする */
+}
+
+.post-reply p {
+    margin: 5px 0;
+    color: #555;
+}
+
+
     
 /* 銀行情報カード */
 .bank-card {
@@ -243,3 +269,4 @@ summary {
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 
 }
+

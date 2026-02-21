@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Wedding - 案内サイト</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="left-image">
+        </div>
+
+        <div class="main-content">
+            <header>
+                <div class="menu-btn" id="menuBtn"> 
+                </div>
+                <nav class="nav-menu" id="navMenu">
+                </nav>
+            </header>
+            <main>
+                <section id="q-and-a" class="section-alt">
+                    <h2>Q & A</h2>
+                    <form id="bbs-form">
+                        <div>
+                            <input type="text" id="user-name" placeholder="お名前(空欄可)" required>
+                        </div>
+                        <div>
+                            <textarea id="user-message" placeholder="メッセージを書く" required></textarea>
+                        </div>
+                        <button type="submit" id="submit-btn">投稿する</button>
+                    </form>
+
+                    <hr>
+
+                    <h2>投稿一覧</h2>
+                    <div id="post-list">
+                        <p>読み込み中...</p>
+                    </div>          
+                </section>
+            </main>
+            <footer>
+                <p>&copy; 2026 Hiroshi Sampei, Sahya Sampei</p>
+            </footer>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

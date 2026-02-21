@@ -84,3 +84,89 @@ function backToGroup() {
     document.querySelectorAll('.dynamic-table-marker').forEach(m => m.remove());
     document.getElementById('seat-marker').style.display = 'none';
 }
+
+// Q&A
+
+// 【設定値】
+const GAS_URL = "https://script.google.com/macros/s/AKfycbxHYshuuVxHQpUbxlKXS3o-qnNmK_P8cpCFe0TFZb544vuglQR_xGUq-Lia4B29XWoO8Q/exec";
+
+// ページの読み込みが終わったら実行
+document.addEventListener('DOMContentLoaded', () => {
+    loadPosts();
+    setupForm();
+});
+
+// HTMLエスケープ用の関数
+function escapeHTML(str) {
+  return str.replace(/[&<>"']/g, function(m) {
+    return {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;'
+    }[m];
+  });
+}
+
+// --- 読み込み処理（即時反映されます） ---
+async function loadPosts() {
+    const postList = document.getElementById('post-list');
+    try {
+        const response = await fetch(GAS_URL);
+        const data = await response.json();
+        
+        let html = '';
+        data.reverse().forEach(post => {
+            const date = new Date(post.date).toLocaleString();
+            
+            // --- 投稿主のメッセージ ---
+            html += `
+                <div class="post-item">
+                    <div class="post-main">
+                        <strong>${escapeHTML(post.name)}</strong> <small>${date}</small>
+                        <p>${escapeHTML(post.message)}</p>
+                    </div>`;
+            
+            // --- 返信がある場合のみ表示 (rnameが空でない場合) ---
+            if (post.rname && post.rname.trim() !== "") {
+                html += `
+                    <div class="post-reply">
+                        <strong>└ ${escapeHTML(post.rname)}</strong>
+                        <p>${escapeHTML(post.rmessage)}</p>
+                    </div>`;
+            }
+
+            html += `</div><hr>`;
+        });
+        postList.innerHTML = html || '<p>まだ投稿はありません</p>';
+    } catch (error) {
+        postList.innerHTML = '<p>読み込みに失敗しました</p>';
+    }
+}
+
+// --- 書き込み処理 ---
+function setupForm() {
+    const form = document.getElementById('bbs-form');
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const postData = {
+            name: document.getElementById('user-name').value,
+            message: document.getElementById('user-message').value
+        };
+
+        try {
+            // GASへデータを送る
+            await fetch(GAS_URL, {
+                method: 'POST',
+                body: JSON.stringify(postData)
+            });
+            
+            form.reset();
+            loadPosts(); // 投稿後、すぐに再読み込みして反映！
+        } catch (error) {
+            alert('送信に失敗しました');
+        }
+    });
+}
