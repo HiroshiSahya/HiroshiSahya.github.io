@@ -273,6 +273,24 @@ textarea{
 #post-list {
     font-size: 130%;   
 }
+
+@media (max-width: 768px) {
+    input {
+    font-size: 130%;
+    }
+
+    textarea{
+        font-size: 130%;
+    }
+
+    #submit-btn {
+        font-size: 130%;
+    }
+
+    #post-list {
+        font-size: 130%;   
+    }
+}
    
 /* 銀行情報カード */
 .bank-card {

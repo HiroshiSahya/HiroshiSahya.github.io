@@ -88,7 +88,7 @@ function backToGroup() {
 // Q&A
 
 // 【設定値】
-const GAS_URL = "https://script.google.com/macros/s/AKfycbw0jvEulWdz4_BA9n4OWmU6N7KCNKR-RR6cupw2zLG99RzrfU5VIC5AOfae5ODSegeL5w/exec";
+const GAS_URL = "https://script.google.com/macros/s/AKfycbzbNifAHCAWt5e60fWe1SiTbhOc_taenVSwHr0CYJH3EbI8OZYtCx34eD95Z6mzyFN1/exec";
 
 // ページの読み込みが終わったら実行
 document.addEventListener('DOMContentLoaded', () => {
