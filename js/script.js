@@ -88,7 +88,7 @@ function backToGroup() {
 // Q&A
 
 // 【設定値】
-const GAS_URL = "https://script.google.com/macros/s/AKfycbxHYshuuVxHQpUbxlKXS3o-qnNmK_P8cpCFe0TFZb544vuglQR_xGUq-Lia4B29XWoO8Q/exec";
+const GAS_URL = "https://script.google.com/macros/s/AKfycbw0jvEulWdz4_BA9n4OWmU6N7KCNKR-RR6cupw2zLG99RzrfU5VIC5AOfae5ODSegeL5w/exec";
 
 // ページの読み込みが終わったら実行
 document.addEventListener('DOMContentLoaded', () => {
@@ -121,12 +121,22 @@ async function loadPosts() {
             const date = new Date(post.date).toLocaleString();
             
             // --- 投稿主のメッセージ ---
-            html += `
-                <div class="post-item">
-                    <div class="post-main">
-                        <strong>${escapeHTML(post.name)}</strong> <small>${date}</small>
-                        <p>${escapeHTML(post.message)}</p>
-                    </div>`;
+            if (post.toname !== "") {
+                html += `
+                    <div class="post-item">
+                        <div class="post-main">
+                            <strong>From ${escapeHTML(post.name)}</strong> <small>${date}</small>
+                            <strong><br>To ${escapeHTML(post.toname)}</strong>
+                            <p>${escapeHTML(post.message)}</p>
+                        </div>`;
+            } else {
+                html += `
+                    <div class="post-item">
+                        <div class="post-main">
+                            <strong>From ${escapeHTML(post.name)}</strong> <small>${date}</small>
+                            <p>${escapeHTML(post.message)}</p>
+                        </div>`;
+            }
             
             // --- 返信がある場合のみ表示 (rnameが空でない場合) ---
             if (post.rname && post.rname.trim() !== "") {
@@ -153,6 +163,7 @@ function setupForm() {
         
         const postData = {
             name: document.getElementById('user-name').value,
+            toname: document.getElementById('touser-name').value,
             message: document.getElementById('user-message').value
         };
 

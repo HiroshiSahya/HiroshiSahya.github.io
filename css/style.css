@@ -258,8 +258,22 @@ summary {
     color: #555;
 }
 
+input {
+    font-size: 130%;
+}
 
-    
+textarea{
+    font-size: 200%;
+}
+
+#submit-btn {
+    font-size: 130%;
+}
+
+#post-list {
+    font-size: 130%;   
+}
+   
 /* 銀行情報カード */
 .bank-card {
     background: white;
