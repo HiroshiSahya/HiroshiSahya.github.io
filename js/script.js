@@ -117,15 +117,17 @@ async function loadPosts() {
         const data = await response.json();
         
         let html = '';
-        data.reverse().forEach(post => {
+        const totalPosts = data.length;
+        data.reverse().forEach((post,index) => {
             const date = new Date(post.date).toLocaleString();
-            
+            const postNumber = totalPosts - index;
+
             // --- 投稿主のメッセージ ---
             if (post.toname !== "") {
                 html += `
                     <div class="post-item">
                         <div class="post-main">
-                            <strong>From ${escapeHTML(post.name)}</strong> <small>${date}</small>
+                            No.${postNumber}   <strong>From ${escapeHTML(post.name)}</strong> <small>${date}</small>
                             <strong><br>To ${escapeHTML(post.toname)}</strong>
                             <p>${escapeHTML(post.message)}</p>
                         </div>`;
@@ -133,7 +135,7 @@ async function loadPosts() {
                 html += `
                     <div class="post-item">
                         <div class="post-main">
-                            <strong>From ${escapeHTML(post.name)}</strong> <small>${date}</small>
+                            No.${postNumber}   <strong>From ${escapeHTML(post.name)}</strong> <small>${date}</small>
                             <p>${escapeHTML(post.message)}</p>
                         </div>`;
             }
