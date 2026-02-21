@@ -243,6 +243,10 @@ summary {
     white-space: pre-wrap; /* 改行を反映させる */
 }
 
+.post-item {
+    text-align: left;
+}
+
 /* 返信部分（インデント） */
 .post-reply {
     text-align: left;
@@ -263,7 +267,7 @@ input {
 }
 
 textarea{
-    font-size: 200%;
+    font-size: 180%;
 }
 
 #submit-btn {
