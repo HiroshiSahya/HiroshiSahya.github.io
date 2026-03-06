@@ -220,6 +220,7 @@ h2 {
 
 /* カテゴリタイトルの調整 */
 .category-title {
+    text-align: center;
     margin-top: 0px;
     margin-bottom: 5px; /* 少しだけ余白を持たせると読みやすいです */
 }
