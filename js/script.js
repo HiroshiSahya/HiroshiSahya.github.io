@@ -34,7 +34,7 @@ function showTable(groupId) {
     const data = tableData[groupId];
     document.getElementById('step-group').style.display = 'none';
     document.getElementById('step-name').style.display = 'block';
-    document.getElementById('selected-group-name').innerText = data.name;
+    document.getElementById('selected-group-name').innerHTML = data.name + "<br>あなたのお名前を選択してください。";
 
     // 既存のテーブルマーカーを一度削除する ---
     const mapWrapper = document.querySelector('.map-wrapper');

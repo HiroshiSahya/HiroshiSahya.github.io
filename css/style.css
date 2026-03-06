@@ -12,6 +12,15 @@ html {
     font-family: "Sawarabi Mincho", "Hiragino Mincho ProN", serif;/*"Helvetica Neue", Arial, sans-serif;*/
 }
 
+/* PCではスマホ用改行を隠す */
+@media screen and (min-width: 768px) {
+  .sp-br { display: none; }
+}
+/* スマホでは表示する (デフォルト設定) */
+@media screen and (max-width: 767px) {
+  .sp-br { display: inline; }
+}
+
 /* 全体のコンテナ（PCでは横並び） */
 .container {
     display: flex;
